@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 5506627125660967038, guid: 1a8162fa00c811a43904a4f611676905, type: 3}
+  moveSpeed: 5
+  turnSpeed: 9

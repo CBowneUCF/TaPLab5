@@ -5,28 +5,44 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject laserPrefab;
+    public float moveSpeed;
+    public float turnSpeed;
+
 
     private float speed = 6f;
     private float horizontalScreenLimit = 10f;
     private float verticalScreenLimit = 6f;
     private bool canShoot = true;
+    private PlayerActions input;
+
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        input = new();
+        input.Enable();
+        input.Gameplay.Shoot.performed += _ => Shooting();
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        Shooting();
+        //Shooting();
     }
 
     void Movement()
     {
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
+        transform.Translate(input.Gameplay.Movement.ReadValue<Vector2>() * Time.deltaTime * moveSpeed, Space.World);
+        transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * input.Gameplay.Turn.ReadValue<float>() * 10f);
+
+
+
+
+       
+
+
+        //transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
         if (transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x * -1f, transform.position.y, 0);
@@ -35,16 +51,16 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
         }
+        
     }
 
     void Shooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
-        {
-            Instantiate(laserPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            canShoot = false;
-            StartCoroutine("Cooldown");
-        }
+        
+            Instantiate(laserPrefab, transform.position, transform.rotation);
+            //canShoot = false;
+            //StartCoroutine("Cooldown");
+        
     }
 
     private IEnumerator Cooldown()
