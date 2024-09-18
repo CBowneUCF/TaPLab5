@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject bigMeteorPrefab;
     public bool gameOver = false;
     public Transform cameraTransform;
+
     Vector2 meteorSpawnRange = new(8, 7.5f);
 
     public int meteorCount = 0;
