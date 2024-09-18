@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    
+
+    public GameObject explosionPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,11 +28,13 @@ public class Meteor : MonoBehaviour
     {
         if (whatIHit.tag == "Player")
         {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
         } else if (whatIHit.tag == "Laser")
         {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
