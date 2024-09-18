@@ -19,7 +19,7 @@ public class Meteor : MonoBehaviour
     {
         transform.Translate(Vector3.down * Time.deltaTime * 2f);
 
-        if (transform.position.y < -11f)
+        if (transform.position.y < Camera.main.transform.position.y -11f)
         {
             Destroy(this.gameObject);
         }

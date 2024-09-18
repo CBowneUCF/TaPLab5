@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
         transform.Translate(input.Gameplay.Movement.ReadValue<Vector2>() * Time.deltaTime * moveSpeed, Space.World);
         transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * input.Gameplay.Turn.ReadValue<float>() * 10f);
 
+        /*
+
         bool offscreenW = false;
         bool offscreenH = false;
 
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
             offscreenH ? -transform.position.y : transform.position.y, 
             0);
 
+         */
 
 
     }
