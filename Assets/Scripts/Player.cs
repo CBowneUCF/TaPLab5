@@ -61,6 +61,15 @@ public class Player : MonoBehaviour
         
     }
 
+    public void DIE()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
+        Destroy(gameObject);
+    }
+
+
+
+
     private IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(1f);

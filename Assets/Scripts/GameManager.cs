@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject meteorPrefab;
     public GameObject bigMeteorPrefab;
     public bool gameOver = false;
+    Vector2 meteorSpawnRange = new(8, 7.5f);
 
     public int meteorCount = 0;
 
@@ -40,12 +41,12 @@ public class GameManager : MonoBehaviour
 
     void SpawnMeteor()
     {
-        Instantiate(meteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        Instantiate(meteorPrefab, new Vector3(Random.Range(-meteorSpawnRange.x, meteorSpawnRange.x), meteorSpawnRange.y, 0), Quaternion.identity);
     }
 
     void BigMeteor()
     {
         meteorCount = 0;
-        Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-meteorSpawnRange.x, meteorSpawnRange.x), meteorSpawnRange.y, 0), Quaternion.identity);
     }
 }

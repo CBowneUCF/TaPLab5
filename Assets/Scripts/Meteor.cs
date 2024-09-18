@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    
+
+    public int health;
+    //public float size;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +29,19 @@ public class Meteor : MonoBehaviour
     {
         if (whatIHit.tag == "Player")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
-            Destroy(whatIHit.gameObject);
+            whatIHit.GetComponent<Player>().DIE();
             Destroy(this.gameObject);
-        } else if (whatIHit.tag == "Laser")
+        } 
+        else if (whatIHit.tag == "Laser")
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
-            Destroy(this.gameObject);
+            health--;
+            if(health <= 0)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
+                
+                Destroy(gameObject);
+            }
         }
     }
 }
