@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool canShoot = true;
     private PlayerActions input;
     Vector2 screenSize;
+    Plane XYPlane = new(Vector2.up, Vector2.right);
 
     // Start is called before the first frame update
     void Awake()
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
         input.Enable();
         input.Gameplay.Shoot.performed += _ => Shooting();
 
-        screenSize = new(10, 5);
+        ChangeCamSize();
     }
 
     // Update is called once per frame
@@ -67,7 +68,10 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    void ChangeCamSize()
+    {
+        screenSize = Camera.main.ViewportToWorldPoint(new(1, 1, -Camera.main.transform.position.z));
+    }
 
 
     private IEnumerator Cooldown()
