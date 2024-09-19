@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -68,7 +69,9 @@ public class Player : MonoBehaviour
     public void DIE()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
-        Destroy(gameObject);
+        input.Gameplay.Restart.performed += _ => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameObject.SetActive(false);
+		
     }
 
     void ChangeCamSize()
