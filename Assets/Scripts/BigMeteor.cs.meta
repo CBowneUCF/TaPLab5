@@ -3,7 +3,11 @@ guid: 147004292113bf34cba36a179026f4ba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - explosionEffectBig: {instanceID: 0}
+  - playerExplosionBig: {instanceID: 0}
+  - playerDieSound: {fileID: 8300000, guid: 18baebe5b5df1d043b7030c3a3f6e107, type: 3}
+  - explosionSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
