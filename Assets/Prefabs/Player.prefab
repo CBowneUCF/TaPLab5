@@ -174,3 +174,6 @@ MonoBehaviour:
   laserPrefab: {fileID: 5506627125660967038, guid: 1a8162fa00c811a43904a4f611676905, type: 3}
   moveSpeed: 5
   turnSpeed: 9
+  laserParent: {fileID: 0}
+  deathVFX: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
+  deathSFX: {fileID: 8300000, guid: 18baebe5b5df1d043b7030c3a3f6e107, type: 3}

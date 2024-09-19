@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9766ed80dded6154bab406035a716cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffectBig: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
-  playerExplosionBig: {fileID: 100002, guid: 6890a03af913b874092fbb1e8337747d, type: 3}
-  playerDieSound: {fileID: 8300000, guid: 18baebe5b5df1d043b7030c3a3f6e107, type: 3}
+  health: 5
+  explosionEffect: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
   shakeDuration: 0.2
   shakeMagnitude: 0.1
+  destroySFX: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}

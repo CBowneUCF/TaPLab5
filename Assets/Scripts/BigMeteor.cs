@@ -7,6 +7,7 @@ public class BigMeteor : MonoBehaviour
     private int hitCount = 0;
     private bool isShaking = false;
     public GameObject explosionEffectBig;
+    public GameObject explosionPrefab;
     public GameObject playerExplosionBig;
     //public AudioClip playerDieSound;
     public float shakeDuration = 0.5f;    // Hit shaking

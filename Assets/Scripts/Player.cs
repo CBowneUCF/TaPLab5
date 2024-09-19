@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed;
     public Transform laserParent;
+    public GameObject deathVFX;
+    public AudioClip deathSFX;
 
     private float horizontalScreenLimit = 10f;
     private float verticalScreenLimit = 6f;
@@ -71,7 +73,8 @@ public class Player : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
         input.Gameplay.Restart.performed += _ => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameObject.SetActive(false);
-		
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(deathSFX, transform.position);
     }
 
     void ChangeCamSize()

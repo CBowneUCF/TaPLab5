@@ -9,10 +9,10 @@ public class Meteor : MonoBehaviour
     public GameObject explosionEffect;
     public float shakeDuration = 0.5f;    // Hit shaking
     public float shakeMagnitude = 0.1f;   // Magnitude of how much it shakes
+    public AudioClip destroySFX;
 
-
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
@@ -45,7 +45,8 @@ public class Meteor : MonoBehaviour
                 
                 Destroy(gameObject);
                 Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            }
+				AudioSource.PlayClipAtPoint(destroySFX, transform.position);
+			}
         }
     }
 }
