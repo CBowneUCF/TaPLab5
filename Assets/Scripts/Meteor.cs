@@ -6,7 +6,10 @@ public class Meteor : MonoBehaviour
 {
 
     public int health;
-    //public float size;
+    public GameObject explosionEffect;
+    public float shakeDuration = 0.5f;    // Hit shaking
+    public float shakeMagnitude = 0.1f;   // Magnitude of how much it shakes
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,7 @@ public class Meteor : MonoBehaviour
                 GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
                 
                 Destroy(gameObject);
+                Instantiate(explosionEffect, transform.position, Quaternion.identity);
             }
         }
     }
