@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    
+    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,7 @@ public class Meteor : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
     }
 }
