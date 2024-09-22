@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Meteor : MonoBehaviour
@@ -11,13 +12,7 @@ public class Meteor : MonoBehaviour
     public float shakeMagnitude = 0.1f;   // Magnitude of how much it shakes
     public AudioClip destroySFX;
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+	
     void Update()
     {
         transform.Translate(Vector3.down * Time.deltaTime * 2f);
@@ -39,9 +34,11 @@ public class Meteor : MonoBehaviour
         {
             Destroy(whatIHit.gameObject);
             health--;
-            if(health <= 0)
+			if (!isShaking) StartCoroutine(ShakeMeteor());
+			if (health <= 0)
             {
                 GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
+                GetComponent<CinemachineImpulseSource>().GenerateImpulse(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0) * shakeMagnitude);
                 
                 Destroy(gameObject);
                 Instantiate(explosionEffect, transform.position, Quaternion.identity);
@@ -49,4 +46,31 @@ public class Meteor : MonoBehaviour
 			}
         }
     }
+
+	private bool isShaking = false;
+	IEnumerator ShakeMeteor()
+	{
+		isShaking = true;
+		Vector3 originalPosition = transform.position;
+
+		float elapsedTime = 0f;
+		while (elapsedTime < shakeDuration)
+		{
+			// Generate a random shake offset
+			float offsetX = Random.Range(-1f, 1f) * 0.1f;
+			float offsetY = Random.Range(-1f, 1f) * 0.1f;
+
+			// Apply the shake to the meteor's position
+			transform.position = new Vector3(originalPosition.x + offsetX, originalPosition.y + offsetY, originalPosition.z);
+
+			elapsedTime += Time.deltaTime;
+
+			yield return null; // Wait for the next frame
+		}
+
+		// Reset the position to original when shake is over
+		transform.position = originalPosition;
+
+		isShaking = false;
+	}
 }

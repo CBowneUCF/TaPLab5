@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2258278813557621840}
   - component: {fileID: 2920972557241435373}
   - component: {fileID: 7679575533736125858}
-  - component: {fileID: -3960669020473114387}
   - component: {fileID: -6781711421714958687}
   m_Layer: 0
   m_Name: BigMeteor
@@ -166,25 +165,8 @@ MonoBehaviour:
   health: 5
   explosionEffect: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
   shakeDuration: 0.2
-  shakeMagnitude: 0.1
+  shakeMagnitude: 0.75
   destroySFX: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
---- !u!114 &-3960669020473114387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5841098876348517303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147004292113bf34cba36a179026f4ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffectBig: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
-  explosionPrefab: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
-  playerExplosionBig: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
-  shakeDuration: 0.2
-  shakeMagnitude: 0.1
 --- !u!114 &-6781711421714958687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 2
+    m_ImpulseChannel: -1
+    m_ImpulseShape: 3
     m_CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -207,7 +189,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ImpulseDuration: 0.2
-    m_ImpulseType: 0
+    m_ImpulseType: 1
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
     m_AmplitudeGain: 1
@@ -237,4 +219,4 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+  m_DefaultVelocity: {x: 0.5, y: 0.5, z: 0.5}
